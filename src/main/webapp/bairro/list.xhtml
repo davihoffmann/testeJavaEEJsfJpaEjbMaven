@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui" template="../index.xhtml">
+
+    <ui:define name="conteudo">
+        <h:form id="dadosBairro">
+            <p:commandButton value="Novo" icon="ui-icon-circle-plus" action="novo" actionListener="#{bairroBean.novo}" />
+            <br />
+            <br />
+            <p:dataTable id="listaBairro" value="#{bairroBean.bairros}" var="bairro" paginator="true" rows="15">
+                <p:column>
+                    <f:facet name="header"><h:outputText value="Código" /></f:facet>
+                    <h:outputText value="#{bairro.id}" />
+                </p:column>
+                <p:column>
+                    <f:facet name="header"><h:outputText value="Nome" /></f:facet>
+                    <h:outputText value="#{bairro.nome}" />
+                </p:column>
+                <p:column>
+                    <f:facet name="header"><h:outputText value="Cidade" /></f:facet>
+                    <h:outputText value="#{bairro.cidade.nome}(#{bairro.cidade.estado.sigla})" />
+                </p:column>
+                <p:column>
+                    <f:facet name="header"><h:outputText value="Açoes" /></f:facet>
+                    <p:commandButton icon="ui-icon-pencil" value="Alterar" action="alterar" actionListener="#{bairroBean.select}" />
+                    <p:commandButton id="deleteButton" icon="ui-icon-circle-close" value="Remover" action="#{bairroBean.remover}" update="listaBairro" /> 
+                </p:column>
+            </p:dataTable>
+        </h:form>
+    </ui:define>
+    
+</ui:composition>

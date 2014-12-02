@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <p:dialog header="Lista de Bairros" widgetVar="dlgBairro" draggable="true" width="800px">
+        <p:dataTable var="bairro" value="#{bairroBean.bairros}" paginator="true">
+            <p:column headerText="Sigla">
+                <h:outputText value="#{bairro.id}" />
+            </p:column>
+
+            <p:column headerText="Nome">
+                <h:outputText value="#{bairro.nome}" />
+            </p:column>
+
+            <p:column headerText="Selecionar">
+                <p:commandButton icon="ui-icon-search" actionListener="#{pessoaBean.selectBairroFromDialog(bairro)}" update=":formPessoa:areaBairro" oncomplete="PF('dlgBairro').hide()"/>
+            </p:column>
+        </p:dataTable>
+    </p:dialog>
+
+</ui:composition>

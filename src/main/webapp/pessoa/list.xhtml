@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui" template="../index.xhtml">
+
+    <ui:define name="conteudo">
+        <h:form id="dadosPessoa">
+
+                <p:commandButton value="Novo" icon="ui-icon-circle-plus" action="novo" actionListener="#{pessoaBean.novo}" />
+                <br />
+                <br />
+                <p:dataTable id="listaPessoa" value="#{pessoaBean.pessoas}" var="pessoa">
+                    <p:column>
+                        <f:facet name="header"><h:outputText value="Código" /></f:facet>
+                        <h:outputText value="#{pessoa.id}" />
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header"><h:outputText value="Nome" /></f:facet>
+                        <h:outputText value="#{pessoa.nome}" />&nbsp;<h:outputText value="#{pessoa.sobrenome}" />
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header"><h:outputText value="CPF" /></f:facet>
+                        <h:outputText value="#{pessoa.cpf}" />
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header"><h:outputText value="Acoes" /></f:facet>
+                        <p:commandButton icon="ui-icon-pencil" value="Alterar" action="alterar" actionListener="#{pessoaBean.selecionar}" />
+                        <p:commandButton id="deleteButton" icon="ui-icon-circle-close" value="Remover" action="#{pessoaBean.remover}" update="listaPessoa" /> 
+                    </p:column>
+                </p:dataTable>
+        </h:form>
+    </ui:define>
+</ui:composition>

@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui" template="../index.xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <ui:define name="conteudo">
+
+        <h:form id="formPessoa"> 
+            <p:fieldset legend="Dados Pessoais" toggleable="true" toggleSpeed="500">
+                <h:panelGrid columns="2">
+                    <p:commandButton value="Voltar" action="list" />
+
+                    <br />
+
+                    <p:panelGrid columns="2">
+                        <h:outputText value="Nome" />
+                        <p:inputText value="#{pessoaBean.pessoa.nome}" />
+
+                        <h:outputText value="Sobrenome" />
+                        <p:inputText value="#{pessoaBean.pessoa.sobrenome}" />
+
+                        <h:outputText value="CPF" />
+                        <p:inputMask value="#{pessoaBean.pessoa.cpf}" mask="999.999.999-99"/>
+
+                        <h:outputText value="Ano de Nascimento" />
+                        <p:inputText value="#{pessoaBean.pessoa.anoNascimento}" />
+
+                    </p:panelGrid>
+
+                </h:panelGrid>
+            </p:fieldset>
+
+            <p:separator />
+
+            <p:fieldset legend="Endereco" toggleable="true" toggleSpeed="500">
+
+                <h:panelGrid id="areaEstado" columns="4">
+                    <h:outputText value="Estado" />
+                    <p:inputText value="#{pessoaBean.pessoa.endereco.estado.sigla}" style="width: 50px" />
+                    <p:inputText value="#{pessoaBean.pessoa.endereco.estado.nome}" />
+                    <p:commandButton icon="ui-icon-search" onclick="PF('dlgEstado').show()" />
+                </h:panelGrid>
+                <ui:include src="ViewEstado.xhtml" />
+
+                <h:panelGrid id="areaCidade" columns="4">
+                    <h:outputText value="Cidade" />
+                    <p:inputText value="#{pessoaBean.pessoa.endereco.cidade.id}" style="width: 50px" />
+                    <p:inputText value="#{pessoaBean.pessoa.endereco.cidade.nome}" />
+                    <p:commandButton icon="ui-icon-search" onclick="PF('dlgCidade').show()" />
+                </h:panelGrid>
+                <ui:include src="ViewCidade.xhtml" />
+
+                <h:panelGrid id="areaRua" columns="4">
+                    <h:outputText value="Rua" />
+                    <p:inputText value="#{pessoaBean.pessoa.endereco.rua.id}" style="width: 50px" />
+                    <p:inputText value="#{pessoaBean.pessoa.endereco.rua.nome}" />
+                    <p:commandButton icon="ui-icon-search" onclick="PF('dlgRua').show()" />
+                </h:panelGrid>
+                <ui:include src="ViewRua.xhtml" />
+
+                <h:panelGrid id="areaBairro" columns="4">
+                    <h:outputText value="Bairro" />
+                    <p:inputText value="#{pessoaBean.pessoa.endereco.bairro.id}" style="width: 50px" />
+                    <p:inputText value="#{pessoaBean.pessoa.endereco.bairro.nome}" />
+                    <p:commandButton icon="ui-icon-search" onclick="PF('dlgBairro').show()" />
+                </h:panelGrid>
+                <ui:include src="ViewBairro.xhtml" />
+
+                <h:panelGrid columns="2">
+                    <h:outputText value="Complemento" />
+                    <p:inputText value="#{pessoaBean.pessoa.endereco.complemento}" />
+                </h:panelGrid>
+
+                <h:panelGrid columns="2">
+                    <h:outputText value="Número" />
+                    <p:inputText value="#{pessoaBean.pessoa.endereco.numero}" />
+                </h:panelGrid>
+
+            </p:fieldset>
+
+            <p:separator />
+
+            <p:commandButton value="Gravar" action="#{pessoaBean.gravar}" />
+            <p:commandButton value="Cancelar" action="index" />
+
+        </h:form>
+
+    </ui:define>
+</ui:composition>

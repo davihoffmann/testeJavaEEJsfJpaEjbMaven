@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    
+    <h:body>
+        <h:form>
+            <p:growl autoUpdate="true"/>
+
+            <p:panelMenu style="width:300px">
+                
+                <p:submenu label="Início">
+                    <p:menuitem value="Calendário" action="/calendario/calendario" icon="ui-icon-disk" />
+                </p:submenu>
+
+                <p:submenu label="Cadastros">
+                    <p:menuitem value="Categoria" action="/categoria/list" icon="ui-icon-disk" />
+                    <p:menuitem value="Estado" action="/estado/list" icon="ui-icon-disk" />
+                    <p:menuitem value="Cidade" action="/cidade/list" icon="ui-icon-disk" />
+                    <p:menuitem value="Bairro" action="/bairro/list" icon="ui-icon-disk" />
+                    <p:menuitem value="Rua" action="/rua/list" icon="ui-icon-disk" />
+                    <p:menuitem value="Pessoa" action="/pessoa/list" icon="ui-icon-disk" />
+                </p:submenu>
+
+            </p:panelMenu>
+        </h:form>
+    </h:body>
+</html>

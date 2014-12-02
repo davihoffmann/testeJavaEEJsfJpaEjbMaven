@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui" template="../index.xhtml">
+
+    <ui:define name="conteudo">
+        <h:form id="dadosCidade">
+            <p:commandButton value="Novo" icon="ui-icon-circle-plus" action="novo" actionListener="#{cidadeBean.novo}" />
+            <br />
+            <br />
+            <p:dataTable id="listaCidade" value="#{cidadeBean.cidades}" var="cidade" paginator="true" rows="10">
+                <p:column>
+                    <f:facet name="header"><h:outputText value="Nome" /></f:facet>
+                    <h:outputText value="#{cidade.nome}" />
+                </p:column>
+                <p:column>
+                    <f:facet name="header"><h:outputText value="Estado" /></f:facet>
+                    <h:outputText value="#{cidade.estado.nome}(#{cidade.estado.sigla})" />
+                </p:column>
+                <p:column>
+                    <f:facet name="header"><h:outputText value="Açoes" /></f:facet>
+                    <p:commandButton icon="ui-icon-pencil" value="Alterar" action="alterar" actionListener="#{cidadeBean.select}" />
+                    <p:commandButton id="deleteButton" icon="ui-icon-circle-close" value="Remover" action="#{cidadeBean.remover}" update="listaCidade" /> 
+                </p:column>
+            </p:dataTable>
+        </h:form>
+    </ui:define>
+    
+</ui:composition>
